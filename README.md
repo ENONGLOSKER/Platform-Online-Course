@@ -25,7 +25,7 @@
 - 📗&nbsp;&nbsp;Clone repository
 
 ```bash
-git clone https://github.com/ENONGLOSKER/course_online
+git clone https://github.com/ENONGLOSKER/Platform-Online-Course
 ```
 - 📁&nbsp;&nbsp;Buat env
 ```bash
