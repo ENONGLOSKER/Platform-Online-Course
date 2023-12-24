@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="" style="width: 100vw;">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 px-4 mb-3 border-bottom bg-white">
+      <h1 class="h2">Tambah Materi <span style="text-transform: capitalize; color: rgb(34, 203, 211);">{{ materi.judul }}</span></h1>
+      <button type="button" class="btn btn-success btn-sm">+ Tambah</button>
+    </div>
+    <div class="container p-3 w-75" style="background-color: rgb(255, 255, 255);">
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary ">Simpan</button>
+        </form>
+          <a href="{% url 'course_list' %}">Back to Course List</a>
+
+    </div>
+  </div>
+{% endblock content %}

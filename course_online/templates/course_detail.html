@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Course Detail <span style="text-transform: capitalize; color: rgb(34, 203, 211);">{{ course.judul }}</span></h1>
+    <a href="{% url 'create_materi' course_id=course.id %}" class="btn btn-success btn-sm">+ Tambah</a>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Judul</th>
+        <th scope="col">Deskripsi</th>
+        <th scope="col">Link</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in materi %}
+      <tr>
+        <td>{{ forloop.counter}}</td>
+        <td class="fw-bold" style="color: rgb(35, 35, 35);">{{ data.judul}}</td>
+        <td>{{ data.deskripsi}} hari</td>
+        <td><a href="{{ data.embed_link}}">{{ data.embed_link}}</a></td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="" class="btn btn-info btn-sm"><ion-icon name="eye-outline"></ion-icon></a>
+            <a href="{% url 'edit_materi' materi_id=data.id %}" class="btn btn-warning btn-sm"><ion-icon name="create-outline"></ion-icon></a>
+            <a href="{% url 'delete_materi' materi_id=data.id %}" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin menghapus data?')"><ion-icon name="trash-outline"></ion-icon></a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}

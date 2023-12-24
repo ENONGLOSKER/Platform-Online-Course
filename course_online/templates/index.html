@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Course</h1>
+    <a href="{% url 'create_course' %}" class="btn btn-success btn-sm">+ Tambah</a>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Judul</th>
+        <th scope="col">Deskripsi</th>
+        <th scope="col">Durasi</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in courses %}
+      <tr>
+        <td>{{ forloop.counter}}</td>
+        <td class="fw-bold" style="text-decoration: none; color: rgb(35, 35, 35);">{{ data.judul}}</td>
+        <td>{{ data.deskripsi}}</td>
+        <td>{{ data.durasi}} hari</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="{% url 'course_detail' course_id=data.id %}" class="btn btn-info btn-sm"><ion-icon name="eye-outline"></ion-icon></a>
+            <a href="{% url 'edit_course' course_id=data.id %}" class="btn btn-warning btn-sm"><ion-icon name="create-outline"></ion-icon></a>
+            <a href="{% url 'delete_course' course_id=data.id %}" class="btn btn-danger btn-sm" onclick="return confirm('yakin ingin menghapus data?')"><ion-icon name="trash-outline"></ion-icon></a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}
